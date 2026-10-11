@@ -76,7 +76,6 @@ function AuthPage() {
             )}
           </form>
         )}
-        <Link to="/staff" className="mt-6 block text-center text-[11px] text-muted-foreground/60 hover:underline">Staff</Link>
       </div>
     </div>
   );
