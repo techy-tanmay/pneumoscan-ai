@@ -47,8 +47,10 @@ function AuthCallback() {
         }
         const { data } = await supabase.auth.getUser();
         if (!data.user) throw new Error("This sign-in link is invalid or has expired.");
+        const next = q.get("next");
+        const target = next && next.startsWith("/") ? next : "/scan";
         window.history.replaceState(null, "", "/auth-callback");
-        navigate({ to: "/dashboard", replace: true });
+        navigate({ to: target, replace: true });
       } catch (e) {
         setError(e instanceof Error ? e.message : "This sign-in link is invalid or has expired.");
       }
