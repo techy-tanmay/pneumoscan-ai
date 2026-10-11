@@ -36,7 +36,7 @@ function AuthPage() {
 
   async function send(e: React.FormEvent) {
     e.preventDefault(); setBusy(true);
-    const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin + "/auth-callback" } });
+    const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin + "/auth-callback?next=/scan" } });
     setBusy(false);
     if (error) { toast.error(error.message); return; }
     setSent(true);
